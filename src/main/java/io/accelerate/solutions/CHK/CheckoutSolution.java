@@ -9,27 +9,28 @@ public class CheckoutSolution {
         int totalPrice = 0;
 
         // count how many of each item we are buying
-        HashMap<Character, Integer> frequencies = new HashMap<>();
+        HashMap<Character, Integer> freq = new HashMap<>();
         for (char item : skus.toCharArray()) {
-            int previousFreq = frequencies.getOrDefault(item, 0);
-            frequencies.put(item, previousFreq + 1);
+            int previousFreq = freq.getOrDefault(item, 0);
+            freq.put(item, previousFreq + 1);
         }
 
         // sum over each item type
-        for (char item : frequencies.keySet()) {
+        for (char item : freq.keySet()) {
             switch (item) {
                 case 'A':
-                    
-                    totalPrice += 50 * frequencies.get(item);
+                    totalPrice += 50 * Math.floorMod(freq.get(item), 3);
+                    totalPrice += 50 * freq.get(item) % 3;
                     break;
                 case 'B':
-                    totalPrice += 30 * frequencies.get(item);
+                    totalPrice += 45 * Math.floorMod(freq.get(item), 2);
+                    totalPrice += 30 * (freq.get(item) % 2);
                     break;
                 case 'C':
-                    totalPrice += 20 * frequencies.get(item);
+                    totalPrice += 20 * freq.get(item);
                     break;
                 case 'D':
-                    totalPrice += 15 * frequencies.get(item);
+                    totalPrice += 15 * freq.get(item);
                     break;
             }
         }
@@ -37,4 +38,5 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
