@@ -31,10 +31,7 @@ public class Shop {
         for (char item : sd.getRequiredItems()) {
             totalSpecialDiscountFrequencies += frequencies.getOrDefault(item, 0);
         }
-        total += sd.getPrice() * totalSpecialDiscountFrequencies / sd.getRequiredAmount();
-        System.out.println()
-        System.out.println(totalSpecialDiscountFrequencies / sd.getRequiredAmount());
-        System.out.println(total);
+        total += sd.getPrice() * (totalSpecialDiscountFrequencies / sd.getRequiredAmount());
 
         // handle the remaining unused special discount items
         int remainingSpecialDiscountItems = totalSpecialDiscountFrequencies % sd.getRequiredAmount();
@@ -44,6 +41,7 @@ public class Shop {
                 frequencies.put(item, 0);
             }
         } else {
+            System.out.println(totalSpecialDiscountFrequencies);
             // we want to choose the cheapest speical-discount-items to not include in the discount
             HashMap<Character, Integer> cheapestSpeicalDiscountPrice = new HashMap<>();
             for (char item : sd.getRequiredItems()) {
@@ -60,17 +58,17 @@ public class Shop {
             for (Map.Entry<Character, Integer> entry : entrylist) {
                 int currentAmount = frequencies.getOrDefault(entry.getKey(), 0);
                 if (currentAmount > 0) {
-                   if (currentAmount < remainingSpecialDiscountItems) {
-                       remainingSpecialDiscountItems -= currentAmount;
+                   if (currentAmount < totalSpecialDiscountFrequencies) {
+                       totalSpecialDiscountFrequencies -= currentAmount;
                        frequencies.put(entry.getKey(), 0);
                    } else {
-                       frequencies.put(entry.getKey(), currentAmount - remainingSpecialDiscountItems);
+                       frequencies.put(entry.getKey(), currentAmount - totalSpecialDiscountFrequencies);
                        break;
                    }
                 }
             }
         }
-
+        System.out.println(frequencies);
 
         // consider if we have any freebies
         List<Freebies> freebies = new ArrayList<>();
@@ -92,6 +90,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 
