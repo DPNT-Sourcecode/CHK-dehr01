@@ -54,4 +54,3 @@ public class Shop {
         return total;
     }
 }
-
