@@ -18,21 +18,21 @@ public class CheckoutSolutionTest {
 
     @ParameterizedTest
     @CsvSource({
-        "'A', 50",
-        "'a', -1",
-        "'B', 30",
-        "'AA', 100",
-        "'AAA', 130",
-        "'AAAB', 160",
-        "'BBCCC', 105",
-        "'BDBCCCD', 135",
-        "'BBBB', 90"
+            "'A', 50",
+            "'AA', 100",
+            "'AAA', 130",
+            "'AAAA', 180",
+            "'AAAAA', 230",
+            "'AAAAAA', 260",
+            "'a', -1",
+            "'B', 30",
+            "'BB', 45",
+            "'AAAB', 160",
+            "'BBCCC', 105",
+            "'BDBCCCD', 135",
+            "'BBBB', 90"
     })
     public void checkoutTest(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
-
-
-
-
