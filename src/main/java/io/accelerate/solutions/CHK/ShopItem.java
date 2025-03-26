@@ -33,7 +33,7 @@ public class ShopItem {
         List<Map.Entry<Integer, Integer>> sortedDiscounts = discounts
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                 .toList();
 
         // apply discounts
@@ -50,5 +50,6 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
 
