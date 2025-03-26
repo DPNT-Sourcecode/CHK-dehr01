@@ -35,13 +35,13 @@ public class Shop {
             // check if we have triggered the discount
             if (frequencies.getOrDefault(f.getGivingItemType(),0) >= f.getMinimumAmount()) {
                 // special case where the free item is itself
+                int itemsAfterRemovingFree;
                 if (f.getGivingItemType() != f.getItemType()) {
-                    int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
-                    frequencies.put(f.getItemType(), itemsAfterRemovingFree);
+                    itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
                 } else {
-                    int itemsAfterRemovingFree = Math.max(f.getMinimumAmount(), existingItems - f.getFreeQuantity());
-                    frequencies.put(f.getItemType(), itemsAfterRemovingFree);
+                    itemsAfterRemovingFree = Math.max(f.getMinimumAmount(), existingItems - f.getFreeQuantity() + 1);
                 }
+                frequencies.put(f.getItemType(), itemsAfterRemovingFree);
             }
         }
 
@@ -53,6 +53,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 
