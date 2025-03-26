@@ -6,6 +6,11 @@ import java.util.HashMap;
 
 public class CheckoutSolution {
 
+
+    public Integer calculatePricing(int n,  int unitPrice) {
+        return n * unitPrice;
+    }
+
     /**
      * @param n number of B's purchased
      * @return cost of n B's with discounts applied
@@ -55,14 +60,13 @@ public class CheckoutSolution {
                     totalPrice += 50 * n;
                     break;
                 case 'C':
-                    totalPrice += 20 * n;
+                    totalPrice += calculatePricing(n, 20);
                     break;
                 case 'D':
-                    totalPrice += 15 * n;
+                    totalPrice += calculatePricing(n, 15);
                     break;
                 case 'E':
-                    totalPrice += 40 * n;
-                    freeBcount = n / 2;
+                    totalPrice += calculatePricing(n, 40);
             }
 //
 //            if (freq.get('B') - freeBcount > 0) {
@@ -73,3 +77,4 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
