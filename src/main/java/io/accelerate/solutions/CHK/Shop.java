@@ -32,9 +32,11 @@ public class Shop {
             totalSpecialDiscountFrequencies += frequencies.getOrDefault(item, 0);
         }
         total += sd.getPrice() * totalSpecialDiscountFrequencies / sd.getRequiredAmount();
+        System.out.println(total);
 
         // handle the remaining unused special discount items
         int remainingSpecialDiscountItems = totalSpecialDiscountFrequencies % sd.getRequiredAmount();
+        System.out.println(remainingSpecialDiscountItems);
         if (remainingSpecialDiscountItems > 0) {
             // we want to choose the cheapest speical-discount-items to not include in the discount
             HashMap<Character, Integer> cheapestSpeicalDiscountPrice = new HashMap<>();
@@ -67,7 +69,6 @@ public class Shop {
         // consider if we have any freebies
         List<Freebies> freebies = new ArrayList<>();
         for (ShopItem item : items) {
-            System.out.println(item.getName() + " - " + item.getFreebies(frequencies));
             freebies.addAll(item.getFreebies(frequencies));
         }
 
@@ -85,6 +86,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 

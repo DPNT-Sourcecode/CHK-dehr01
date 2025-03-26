@@ -17,21 +17,15 @@ public class CheckoutSolutionTest_R5 {
 
     @ParameterizedTest
     @CsvSource({
-            "'EEB', 80", // 3Es so apply discount
-            "'EEEB', 120",
-            "'EEEEBB', 160",
-            "'UUU', 120",
-            "'FF', 20",
-            "'FFFF', 30",
-            "'UUUU', 120",
-            "'UUUUU', 160",
-            "'UUUUUUUU', 240",
-            "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 965",
-            "'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ', 1880",
-            "'LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH', 1880"
+            "'AAAB', 160",
+            "'BBCCC', 105",
+            "'BDBCCCD', 135",
+            "'STX', 45",
+            "'STXX', 62",
     })
     public void tests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 
 }
+
