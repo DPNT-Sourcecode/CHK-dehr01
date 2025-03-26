@@ -6,6 +6,12 @@ import java.util.HashMap;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
+
+        // check string is valid
+        if (!skus.matches("[ABCD]*")) {
+            return -1;
+        }
+
         int totalPrice = 0;
 
         // count how many of each item we are buying
@@ -38,6 +44,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 
