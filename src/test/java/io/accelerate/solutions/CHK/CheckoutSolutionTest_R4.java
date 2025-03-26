@@ -26,6 +26,9 @@ public class CheckoutSolutionTest_R4 {
             "'UUUU', 120",
             "'UUUUU', 160",
             "'UUUUUUUU', 240",
+            "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 965",
+            "'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ', 1880",
+            "'LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH', 1880"
     })
     public void Btests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
