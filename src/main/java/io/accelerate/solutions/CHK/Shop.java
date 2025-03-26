@@ -29,11 +29,8 @@ public class Shop {
         for (Freebies f : freebies) {
             int existingItems = frequencies.getOrDefault(f.getItemType(), 0);
             // but only if there are more than 3 in the basket
-//            if (existingItems < 3) {
-//                continue;
-//            }
-            int itemsAfterRemovingFreeOnes = Math.max(0, existingItems - f.getFreeQuantity());
-            frequencies.put(f.getItemType(), itemsAfterRemovingFreeOnes);
+            int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
+            frequencies.put(f.getItemType(), itemsAfterRemovingFree);
         }
 
         // sum how much each of the non-free items now cost
@@ -44,6 +41,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 
