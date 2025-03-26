@@ -22,8 +22,11 @@ public class CheckoutSolutionTest {
             "'AA', 100",
             "'AAA', 130",
             "'AAAA', 180",
-            "'AAAAA', 230",
-            "'AAAAAA', 260",
+            "'AAAAA', 200",
+            "'AAAAAA', 250",
+            "'AAAAAAA', 300",
+            "'AAAAAAAA', 330",
+            "'AAAAAAAAA', 380",
             "'a', -1",
             "'B', 30",
             "'BB', 45",
@@ -36,3 +39,4 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
+
