@@ -19,12 +19,12 @@ public class CheckoutSolution {
         for (char item : freq.keySet()) {
             switch (item) {
                 case 'A':
-                    totalPrice += 50 * (freq.get(item) / 3); // full price remainder
-                    totalPrice += 130 * (freq.get(item) % 3); // discounts
+                    totalPrice += 50 * (freq.get(item) % 3); // full price remainder
+                    totalPrice += 130 * (freq.get(item) / 3); // discounts
                     break;
                 case 'B':
-                    totalPrice += 30 * (freq.get(item) / 2); // full price remainder
-                    totalPrice += 45 * (freq.get(item) % 2); // discounts
+                    totalPrice += 30 * (freq.get(item) % 2); // full price remainder
+                    totalPrice += 45 * (freq.get(item) / 2); // discounts
                     break;
                 case 'C':
                     totalPrice += 20 * freq.get(item);
@@ -38,6 +38,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 
