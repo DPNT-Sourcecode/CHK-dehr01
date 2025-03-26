@@ -55,7 +55,7 @@ public class CheckoutSolution {
                 .addItem(new ShopItem('J', 60))
                 .addItem(
                         new ShopItem('K', 70)
-                                .addDiscount(2, 150)
+                                .addDiscount(2, 120)
                 )
                 .addItem(new ShopItem('L', 90))
                 .addItem(new ShopItem('M', 15))
@@ -96,3 +96,4 @@ public class CheckoutSolution {
         return shop.calculatePrice(freq);
     }
 }
+
