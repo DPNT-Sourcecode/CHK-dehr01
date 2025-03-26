@@ -39,8 +39,8 @@ public class Shop {
                 if (f.getGivingItemType() != f.getItemType()) {
                     itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
                 } else {
-                    
-                    itemsAfterRemovingFree = Math.max(f.getMinimumAmount(), existingItems - f.getFreeQuantity());
+                    itemsAfterRemovingFree = 0;
+                    existingItems -=
                 }
                 frequencies.put(f.getItemType(), itemsAfterRemovingFree);
             }
@@ -54,4 +54,5 @@ public class Shop {
         return total;
     }
 }
+
 
