@@ -25,10 +25,12 @@ public class Shop {
             freebies.addAll(item.getFreebies(frequencies.getOrDefault(item.getName(), 0)));
         }
 
+        int totalItemsBought = frequencies.values().stream().mapToInt(Integer::intValue).sum();
+
         // if we do, remove the free amount from our frequencies map
         for (Freebies f : freebies) {
             int existingItems = frequencies.getOrDefault(f.getItemType(), 0);
-            if (existingItems > 3) {
+            if (totalItemsBought > 3) {
                 int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
                 frequencies.put(f.getItemType(), itemsAfterRemovingFree);
             }
@@ -42,4 +44,5 @@ public class Shop {
         return total;
     }
 }
+
 
