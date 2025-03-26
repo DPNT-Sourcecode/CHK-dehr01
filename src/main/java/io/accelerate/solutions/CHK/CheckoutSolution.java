@@ -2,6 +2,7 @@ package io.accelerate.solutions.CHK;
 
 import io.accelerate.runner.SolutionNotImplementedException;
 
+
 import java.util.HashMap;
 
 public class CheckoutSolution {
@@ -59,20 +60,29 @@ public class CheckoutSolution {
             int previousFreq = freq.getOrDefault(item, 0);
             freq.put(item, previousFreq + 1);
         }
+        int totalPrice = 0;
+
+        Shop shop = new Shop();
+        shop
+                .addItem(new ShopItem('C', 20))
+                .addItem(new ShopItem('E', 40))
+                .addItem(new ShopItem('D', 15));
+
+        totalPrice += shop.calculatePrice(freq);
 
         // add up the prices for each item
-        int totalPrice = 0;
         totalPrice += calculateApricing(freq.getOrDefault('A', 0));
         totalPrice += calculateBpricing(
                 freq.getOrDefault('B', 0) -
                         (freq.getOrDefault('E', 0) / 2)
         );
-        totalPrice += calculatePricing(freq.getOrDefault('C', 0), 20);
-        totalPrice += calculatePricing(freq.getOrDefault('D', 0), 15);
-        totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
+//        totalPrice += calculatePricing(freq.getOrDefault('C', 0), 20);
+//        totalPrice += calculatePricing(freq.getOrDefault('D', 0), 15);
+//        totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
         totalPrice += calculateFpricing(freq.getOrDefault('F', 0));
 
 
         return totalPrice;
     }
 }
+

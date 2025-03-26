@@ -1,6 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Shop {
@@ -10,9 +11,18 @@ public class Shop {
         items = new ArrayList<>();
     };
 
-    public ShoppingCart addItem(ShopItem item) {
+    public Shop addItem(ShopItem item) {
         items.add(item);
         return this;
     }
+
+    public int calculatePrice(HashMap<Character, Integer> frequencies) {
+        int total = 0;
+        for (ShopItem item : items) {
+            total += item.calculatePrice(frequencies.getOrDefault(item.getName(), 0));
+        }
+        return total;
+    }
 }
+
 
