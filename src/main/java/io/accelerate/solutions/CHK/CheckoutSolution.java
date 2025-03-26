@@ -4,16 +4,6 @@ import java.util.HashMap;
 
 public class CheckoutSolution {
 
-    public Integer calculateApricing(int n) {
-        int totalPrice = 0;
-        totalPrice += 200 * (n / 5);
-        n %= 5;
-        totalPrice += 130 * (n / 3);
-        n %= 3;
-        totalPrice += 50 * n;
-        return totalPrice;
-    }
-
     /**
      * @param n number of B's purchased
      * @return cost of n B's with discounts applied
@@ -65,7 +55,6 @@ public class CheckoutSolution {
         totalPrice += shop.calculatePrice(freq);
 
         // add up the prices for each item
-        totalPrice += calculateApricing(freq.getOrDefault('A', 0));
         totalPrice += calculateBpricing(
                 freq.getOrDefault('B', 0) -
                         (freq.getOrDefault('E', 0) / 2)
@@ -76,3 +65,4 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+

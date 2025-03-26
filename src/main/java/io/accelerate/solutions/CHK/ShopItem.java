@@ -1,5 +1,6 @@
 package io.accelerate.solutions.CHK;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class ShopItem {
@@ -27,7 +28,12 @@ public class ShopItem {
         int totalPrice = 0;
 
         if (count <= 0) { return totalPrice; }
-        
+
+        // sort discounts so we consider them highest frequency first
+        List<Map.Entry<Integer, Integer>> sortedDiscounts = discounts
+                .stream()
+                .sorted((a, b) -> a.getKey().compareTo(b.getKey()))
+                .collect(Collectors.toList());
         // apply discounts
         for (Integer frequency : discounts.keySet()) {
             int discountPrice = discounts.get(frequency);
@@ -40,3 +46,4 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
