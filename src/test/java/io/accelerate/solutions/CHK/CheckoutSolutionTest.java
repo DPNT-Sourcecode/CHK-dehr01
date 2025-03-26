@@ -81,8 +81,3 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
-
-
-
-
-
