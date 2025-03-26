@@ -1,22 +1,23 @@
-package io.accelerate.solutions.SUM;
+package io.accelerate.solutions.HLO;
 
-import org.junit.jupiter.api.Test;
+import io.accelerate.solutions.HLO.HelloSolution;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class SumSolutionTest {
-    private SumSolution sum;
+public class HelloSolutionTest {
+    private HelloSolution hello;
 
     @BeforeEach
     public void setUp() {
-        sum = new SumSolution();
+        hello = new HelloSolution();
     }
 
     @Test
-    public void compute_sum() {
-        assertThat(sum.compute(1, 1), equalTo(2));
+    public void helloTest() {
+        assertThat(hello.hello("kishan"), equalTo("Hello kishan"));
     }
 }
+
