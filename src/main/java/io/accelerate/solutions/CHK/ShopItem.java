@@ -58,9 +58,6 @@ public class ShopItem {
 
         if (count <= 0) { return totalPrice; }
 
-        // apply buy X get Y free
-
-
         // sort discounts so we consider them highest frequency first
         List<Map.Entry<Integer, Integer>> sortedDiscounts = discounts
                 .entrySet()
@@ -72,7 +69,6 @@ public class ShopItem {
         for (Map.Entry<Integer, Integer> e : sortedDiscounts) {
             int frequency = e.getKey();
             int discountPrice = e.getValue();
-            System.out.println(frequency + "- " + discountPrice);
             int fullSets = count / frequency;
             totalPrice += fullSets * discountPrice;
             count %= frequency;
@@ -82,4 +78,5 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 

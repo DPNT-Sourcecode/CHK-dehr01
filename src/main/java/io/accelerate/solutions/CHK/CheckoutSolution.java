@@ -36,35 +36,30 @@ public class CheckoutSolution {
             int previousFreq = freq.getOrDefault(item, 0);
             freq.put(item, previousFreq + 1);
         }
-        int totalPrice = 0;
 
-        Shop shop = new Shop();
-
-        shop
+        Shop shop = new Shop()
                 .addItem(
                     new ShopItem('A', 50)
                             .addDiscount(3, 130)
                             .addDiscount(5, 200)
                 )
+                .addItem(
+                        new ShopItem('B', 30)
+                                .addDiscount(2, 45)
+                )
                 .addItem(new ShopItem('C', 20))
-                .addItem(new ShopItem('E', 40))
                 .addItem(new ShopItem('D', 15))
                 .addItem(
-                new ShopItem('F', 10)
-                        .addBuyXgetYfree(2, 1, 'F')
+                        new ShopItem('E', 40)
+                                .addBuyXgetYfree(2, 1, 'B')
+                )
+                .addItem(
+                    new ShopItem('F', 10)
+                            .addBuyXgetYfree(2, 1, 'F')
                 );
 
 
-        totalPrice += shop.calculatePrice(freq);
-
-        // add up the prices for each item
-        totalPrice += calculateBpricing(
-                freq.getOrDefault('B', 0) -
-                        (freq.getOrDefault('E', 0) / 2)
-        );
-        totalPrice += calculateFpricing(freq.getOrDefault('F', 0));
-
-
-        return totalPrice;
+        return shop.calculatePrice(freq);
     }
 }
+

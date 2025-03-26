@@ -27,7 +27,7 @@ public class Shop {
 
         // if we do, remove the free amount from our frequencies map
         for (Freebies f : freebies) {
-            int existingItems = frequencies.get(f.getItemType());
+            int existingItems = frequencies.getOrDefault(f.getItemType(), 0);
             int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
             frequencies.put(f.getItemType(), itemsAfterRemovingFree);
         }
@@ -40,4 +40,5 @@ public class Shop {
         return total;
     }
 }
+
 
