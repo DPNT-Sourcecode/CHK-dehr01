@@ -17,7 +17,7 @@ public class CheckoutSolutionTest_R4 {
 
     @ParameterizedTest
     @CsvSource({
-            "'EEB', 80",
+            "'EEB', 80", // 3Es so apply discount
             "'EEEB', 120",
             "'EEEEBB', 160",
             "'UUU', 120",
@@ -29,4 +29,5 @@ public class CheckoutSolutionTest_R4 {
     }
 
 }
+
 
