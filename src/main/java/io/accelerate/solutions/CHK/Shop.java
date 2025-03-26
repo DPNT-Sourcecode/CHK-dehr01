@@ -25,25 +25,12 @@ public class Shop {
             freebies.addAll(item.getFreebies(frequencies.getOrDefault(item.getName(), 0)));
         }
 
-//        int totalItemsBought = frequencies.values().stream().mapToInt(Integer::intValue).sum();
 
         // if we do, remove the free amount from our frequencies map
         for (Freebies f : freebies) {
-            System.out.println(f);
-            int existingItems = frequencies.getOrDefault(f.getItemType(), 0);
-
-            // check if we have triggered the discount
-            if (frequencies.getOrDefault(f.getGivingItemType(),0) >= f.getMinimumAmount()) {
-                // special case where the free item is itself
-                int itemsAfterRemovingFree;
-                if (f.getGivingItemType() != f.getItemType()) {
-                    itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
-                } else {
-                    itemsAfterRemovingFree = 0;
-                    existingItems -=
-                }
-                frequencies.put(f.getItemType(), itemsAfterRemovingFree);
-            }
+            int existingItems = frequencies.getOrDefault(f.getFreeItemType(), 0);
+            int itemsAfterRemovingFree = Math.max(0, existingItems - f.getNumberOfFreeItems());
+            frequencies.put(f.getFreeItemType(), itemsAfterRemovingFree);
         }
 
         // sum how much each of the non-free items now cost
@@ -54,5 +41,6 @@ public class Shop {
         return total;
     }
 }
+
 
 

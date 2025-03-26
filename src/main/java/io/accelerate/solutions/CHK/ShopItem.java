@@ -41,7 +41,7 @@ public class ShopItem {
 
             int fullSets = n / e.getKey();
             if (fullSets > 0) {
-                freebiesList.add(new Freebies(name, freeItemType, fullSets * freeFrequency, e.getKey(), numberYouGetFree));
+                freebiesList.add(new Freebies(freeItemType, fullSets * freeFrequency));
             }
         }
 
@@ -78,4 +78,5 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
