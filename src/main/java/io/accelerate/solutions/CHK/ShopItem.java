@@ -1,15 +1,15 @@
 package io.accelerate.solutions.CHK;
 
 public class ShopItem {
-    private int unitPrice;
-    private char name;
+    private final int unitPrice;
+    private final char name;
 
     public ShopItem(char name, int unitPrice) {
-        name = name;
-        unitPrice = unitPrice;
+        this.name = name;
+        this.unitPrice = unitPrice;
     }
 
-   public Character getName() {
+   public char getName() {
         return name;
    }
 
@@ -18,4 +18,5 @@ public class ShopItem {
         return count * unitPrice;
     }
 }
+
 
