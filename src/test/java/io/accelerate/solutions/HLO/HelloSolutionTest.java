@@ -17,8 +17,9 @@ public class HelloSolutionTest {
 
     @Test
     public void helloTest() {
-        assertThat(hello.hello("kishan"), equalTo("Hello, World!"));
+        assertThat(hello.hello("kishan"), equalTo("Hello, kishan!"));
     }
 }
+
 
 
