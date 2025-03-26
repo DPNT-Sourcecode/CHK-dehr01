@@ -29,7 +29,3 @@ public class Freebies {
         return String.format("Freebies[givignItemType='%c', itemType='%c', freeQuantity=%d, minimumAmount=%d]", givingItemType, itemType, freeQuantity, minimumAmount);
     }
 }
-
-
-
-

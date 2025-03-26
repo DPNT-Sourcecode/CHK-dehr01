@@ -23,11 +23,12 @@ public class CheckoutSolutionTest_R4 {
             "'UUU', 120",
             "'FF', 20",
             "'FFFF', 30",
+            "'UUUU', 120",
+            "'UUUUU', 160",
+            "'UUUUUUUU', 240",
     })
     public void Btests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 
 }
-
-
