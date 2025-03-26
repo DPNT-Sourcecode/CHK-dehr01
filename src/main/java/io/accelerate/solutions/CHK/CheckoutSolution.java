@@ -47,7 +47,7 @@ public class CheckoutSolution {
 
         // A
         shop.addItem(
-                new ShopItem('A', 30)
+                new ShopItem('A', 50)
                         .addDiscount(3, 130)
                         .addDiscount(5, 200)
         );
@@ -65,4 +65,5 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
