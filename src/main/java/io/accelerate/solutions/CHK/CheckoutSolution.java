@@ -42,6 +42,8 @@ public class CheckoutSolution {
     public Integer calculateFpricing(int n) {
         if (n <= 0 ) {return 0; }
         if (n < 3) { return 10 * n; }
+        int price = 20; // pay 20 for the first 3
+        n -= 3;
         return (int) (10 * Math.ceil(n / 2.0));
     }
 
@@ -75,6 +77,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 

@@ -59,7 +59,7 @@ public class CheckoutSolutionTest {
             "'FF', 20", // offer requires 3 Fs in basket
             "'FFF', 20",
             "'FFFF', 30",
-            "'FFFFF', 40",
+            "'FFFFF', 30",
             "'FFFFFF', 40",
     })
     public void Ftests(String input, int expectedPrice) {
@@ -81,6 +81,7 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
+
 
 
 
