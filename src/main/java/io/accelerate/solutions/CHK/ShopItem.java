@@ -1,21 +1,27 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ShopItem {
     private final int unitPrice;
     private final char name;
     private HashMap<Integer, Integer> discounts; // frequency -> resulting price
+    private HashMap<Integer, Integer> buyXgetYfree;
 
     public ShopItem(char name, int unitPrice) {
         this.name = name;
         this.unitPrice = unitPrice;
         this.discounts = new HashMap<>();
+        this.buyXgetYfree = new HashMap<>();
     }
 
     public ShopItem addDiscount(int frequency, int resulting_price) {
         discounts.put(frequency, resulting_price);
+        return this;
+    }
+
+    public ShopItem addBuyXgetYfree(int buyFrequency, int freeFrequency, char freeItemType) {
+        buyXgetYfree.put(buyFrequency, freeFrequency);
         return this;
     }
 
@@ -28,6 +34,9 @@ public class ShopItem {
         int totalPrice = 0;
 
         if (count <= 0) { return totalPrice; }
+
+        // apply buy X get Y free
+
 
         // sort discounts so we consider them highest frequency first
         List<Map.Entry<Integer, Integer>> sortedDiscounts = discounts
@@ -50,6 +59,7 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
 
 

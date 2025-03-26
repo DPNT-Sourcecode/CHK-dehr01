@@ -41,16 +41,19 @@ public class CheckoutSolution {
         Shop shop = new Shop();
 
         shop
+                .addItem(
+                    new ShopItem('A', 50)
+                            .addDiscount(3, 130)
+                            .addDiscount(5, 200)
+                )
                 .addItem(new ShopItem('C', 20))
                 .addItem(new ShopItem('E', 40))
-                .addItem(new ShopItem('D', 15));
+                .addItem(new ShopItem('D', 15))
+                .addItem(
+                new ShopItem('F', 10)
+                        .addBuyXgetYfree(2, 1, 'F')
+                );
 
-        // A
-        shop.addItem(
-                new ShopItem('A', 50)
-                        .addDiscount(3, 130)
-                        .addDiscount(5, 200)
-        );
 
         totalPrice += shop.calculatePrice(freq);
 
@@ -65,5 +68,6 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
