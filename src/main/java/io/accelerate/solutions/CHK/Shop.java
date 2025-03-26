@@ -18,11 +18,15 @@ public class Shop {
 
     public int calculatePrice(HashMap<Character, Integer> frequencies) {
         int total = 0;
+        System.out.println(frequencies + " " + items);
         for (ShopItem item : items) {
+
+            System.out.println("-" + item.getName() + "--" + frequencies.getOrDefault(item.getName(), 0));
             total += item.calculatePrice(frequencies.getOrDefault(item.getName(), 0));
         }
         return total;
     }
 }
+
 
 
