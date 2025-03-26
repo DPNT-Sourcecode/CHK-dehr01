@@ -36,7 +36,9 @@ public class CheckoutSolution {
 
         // sum over some items
         // B prices
-        totalPrice += calculateBpricing(freq.get('B'));
+        if (freq.containsKey('B')) {
+            totalPrice += calculateBpricing(freq.get('B'));
+        }
 
         // sum over each item type
         for (char item : freq.keySet()) {
@@ -69,5 +71,6 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
