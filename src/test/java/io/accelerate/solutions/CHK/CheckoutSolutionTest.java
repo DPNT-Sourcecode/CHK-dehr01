@@ -60,6 +60,7 @@ public class CheckoutSolutionTest {
             "'FFF', 20",
             "'FFFF', 30",
             "'FFFFF', 40",
+            "'FFFFFF', 40",
     })
     public void Ftests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
@@ -80,6 +81,7 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
+
 
 
 
