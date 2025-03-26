@@ -28,10 +28,8 @@ public class Shop {
         // if we do, remove the free amount from our frequencies map
         for (Freebies f : freebies) {
             int existingItems = frequencies.getOrDefault(f.getItemType(), 0);
-            if (existingItems > 3) {
-                int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
-                frequencies.put(f.getItemType(), itemsAfterRemovingFree);
-            }
+            int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
+            frequencies.put(f.getItemType(), itemsAfterRemovingFree);
         }
 
         // sum how much each of the non-free items now cost
@@ -42,8 +40,3 @@ public class Shop {
         return total;
     }
 }
-
-
-
-
-

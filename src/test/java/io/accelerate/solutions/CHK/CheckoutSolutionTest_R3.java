@@ -1,14 +1,13 @@
 package io.accelerate.solutions.CHK;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class CheckoutSolutionTest {
+public class CheckoutSolutionTest_R3 {
     private CheckoutSolution checkout;
 
     @BeforeEach
