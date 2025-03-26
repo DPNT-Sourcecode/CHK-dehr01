@@ -20,9 +20,13 @@ public class CheckoutSolutionTest_R4 {
             "'EEB', 80",
             "'EEEB', 120",
             "'EEEEBB', 160",
+            "'UUU', 120",
+            "'FF', 20",
+            "'FFFF', 30",
     })
     public void Btests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 
 }
+
