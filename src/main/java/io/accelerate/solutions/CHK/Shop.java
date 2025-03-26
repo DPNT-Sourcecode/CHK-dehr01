@@ -18,12 +18,21 @@ public class Shop {
     }
 
     public int calculatePrice(HashMap<Character, Integer> frequencies) {
+
         // consider if we have any freebies
         List<Freebies> freebies = new ArrayList<>();
         for (ShopItem item : items) {
-            freebies.add(item.getFreebies(frequencies.getOrDefault(item.getName(), 0)));
+            freebies.addAll(item.getFreebies(frequencies.getOrDefault(item.getName(), 0)));
         }
 
+        // if we do, remove the free amount from our frequencies map
+        for (Freebies f : freebies) {
+            int existingItems = frequencies.get(f.getItemType());
+            int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
+            frequencies.put(f.getItemType(), itemsAfterRemovingFree);
+        }
+
+        // sum how much each of the non-free items now cost
         int total = 0;
         for (ShopItem item : items) {
             total += item.calculatePrice(frequencies.getOrDefault(item.getName(), 0));
@@ -31,3 +40,4 @@ public class Shop {
         return total;
     }
 }
+

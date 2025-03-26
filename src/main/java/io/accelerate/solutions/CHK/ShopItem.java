@@ -12,7 +12,7 @@ public class ShopItem {
         this.name = name;
         this.unitPrice = unitPrice;
         this.discounts = new HashMap<>();
-        this.buyXgetYfree = new HashMap<>();
+        this.buyXgetYfreeOfZ = new HashMap<>();
     }
 
     public ShopItem addDiscount(int frequency, int resulting_price) {
@@ -82,3 +82,4 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
