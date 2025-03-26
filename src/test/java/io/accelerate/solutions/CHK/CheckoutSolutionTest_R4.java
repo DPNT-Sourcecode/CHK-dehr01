@@ -30,8 +30,9 @@ public class CheckoutSolutionTest_R4 {
             "'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ', 1880",
             "'LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH', 1880"
     })
-    public void Btests(String input, int expectedPrice) {
+    public void tests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 
 }
+
