@@ -42,11 +42,9 @@ public class CheckoutSolution {
     public Integer checkout(String skus) {
 
         // check string is valid
-        if (!skus.matches("[ABCDE]*")) {
+        if (!skus.matches("[ABCDEF]*")) {
             return -1;
         }
-
-        int totalPrice = 0;
 
         // count how many of each item we are buying
         HashMap<Character, Integer> freq = new HashMap<>();
@@ -55,21 +53,24 @@ public class CheckoutSolution {
             freq.put(item, previousFreq + 1);
         }
 
-        // sum over some items
-        if (freq.containsKey('B')) {
-            int numberOfBs = freq.get('B');
-            int numberOfFreeBs = freq.getOrDefault('E', 0) / 2;
-            totalPrice += calculateBpricing(numberOfBs - numberOfFreeBs);
-        }
-
+        // add up the prices for each item
+        int totalPrice = 0;
+        totalPrice += calculateApricing(freq.getOrDefault('A', 0));
+        totalPrice += calculateBpricing(
+                freq.getOrDefault('B', 0) -
+                        (freq.getOrDefault('E', 0) / 2)
+        );
         totalPrice += calculatePricing(freq.getOrDefault('C', 0), 20);
         totalPrice += calculatePricing(freq.getOrDefault('D', 0), 15);
         totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
-        totalPrice += calculateApricing(freq.getOrDefault('A', 0));
+
+        int fCount = freq.getOrDefault('F', 0);
+        totalPrice += calculatePricing((fCount / 2) + (fCount % 2), 10);
 
 
         return totalPrice;
     }
 }
+
 
 
