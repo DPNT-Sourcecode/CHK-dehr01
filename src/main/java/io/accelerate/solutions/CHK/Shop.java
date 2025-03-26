@@ -29,7 +29,15 @@ public class Shop {
         int total = 0;
 
         // calculate the special discount
+        int totalSpecialDiscountFrequencies = 0;
+        for (char item : sd.getRequiredItems()) {
+            totalSpecialDiscountFrequencies += frequencies.getOrDefault(item, 0);
+        }
+        total += sd.getPrice() * totalSpecialDiscountFrequencies / sd.getRequiredAmount();
 
+        // handle the remainder
+        int remainingSpecialDiscountItems = totalSpecialDiscountFrequencies % sd.getRequiredAmount();
+        // we want to choose the cheapest 
 
 
         // consider if we have any freebies
@@ -53,3 +61,4 @@ public class Shop {
         return total;
     }
 }
+
