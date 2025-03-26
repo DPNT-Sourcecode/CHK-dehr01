@@ -90,8 +90,10 @@ public class CheckoutSolution {
                 .addItem(new ShopItem('W', 20))
                 .addItem(new ShopItem('X', 90))
                 .addItem(new ShopItem('Y', 10))
-                .addItem(new ShopItem('Z', 50));
+                .addItem(new ShopItem('Z', 50))
+                .addSpecialDiscount(new char[]{'S', 'T', 'X', 'Y', 'Z'}, 3, 45);
 
         return shop.calculatePrice(freq);
     }
 }
+

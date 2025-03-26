@@ -17,6 +17,10 @@ public class Shop {
         return this;
     }
 
+    public Shop addSpecialDiscount(char[] includedItems, int requiredAmount, int price) {
+        return this;
+    }
+
     public int calculatePrice(HashMap<Character, Integer> frequencies) {
 
         // consider if we have any freebies
@@ -41,5 +45,6 @@ public class Shop {
         return total;
     }
 }
+
 
 
