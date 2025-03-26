@@ -37,7 +37,8 @@ public class ShopItem {
             char freeItemType = e.getValue().getKey();
             int freeItemPerRequired = e.getValue().getValue();
 
-            if (requiredItemType != freeItemType && actualRequiredItemCount / freeItemPerRequired > 0) {
+            if (requiredItemType != freeItemType) {
+                System.out.println(actualRequiredItemCount / freeItemPerRequired);
                 freebiesList.add(new Freebies(freeItemType, actualRequiredItemCount / freeItemPerRequired));
                 continue;
             }
@@ -89,4 +90,5 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
