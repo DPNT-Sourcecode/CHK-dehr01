@@ -1,22 +1,8 @@
 package io.accelerate.solutions.CHK;
 
-import io.accelerate.runner.SolutionNotImplementedException;
-
-
 import java.util.HashMap;
 
 public class CheckoutSolution {
-
-    /**
-     *
-     * @param n number of the item purchased
-     * @param unitPrice price for one item
-     * @return the total price
-     */
-    public Integer calculatePricing(int n,  int unitPrice) {
-        if (n <= 0) { return 0; }
-        return n * unitPrice;
-    }
 
     public Integer calculateApricing(int n) {
         int totalPrice = 0;
@@ -63,10 +49,18 @@ public class CheckoutSolution {
         int totalPrice = 0;
 
         Shop shop = new Shop();
+
         shop
                 .addItem(new ShopItem('C', 20))
                 .addItem(new ShopItem('E', 40))
                 .addItem(new ShopItem('D', 15));
+
+        // A
+        shop.addItem(
+                new ShopItem('A', 30)
+                        .addDiscount(3, 130)
+                        .addDiscount(5, 200)
+        );
 
         totalPrice += shop.calculatePrice(freq);
 
@@ -76,13 +70,11 @@ public class CheckoutSolution {
                 freq.getOrDefault('B', 0) -
                         (freq.getOrDefault('E', 0) / 2)
         );
-//        totalPrice += calculatePricing(freq.getOrDefault('C', 0), 20);
-//        totalPrice += calculatePricing(freq.getOrDefault('D', 0), 15);
-//        totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
         totalPrice += calculateFpricing(freq.getOrDefault('F', 0));
 
 
         return totalPrice;
     }
 }
+
 
