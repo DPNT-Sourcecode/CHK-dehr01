@@ -39,6 +39,12 @@ public class CheckoutSolution {
         return price;
     }
 
+    public Integer calculateFpricing(int n) {
+        if (n <= 0 ) {return 0;}
+        int price = 0;
+        return price;
+    }
+
     public Integer checkout(String skus) {
 
         // check string is valid
@@ -65,12 +71,13 @@ public class CheckoutSolution {
         totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
 
         int fCount = freq.getOrDefault('F', 0);
-        totalPrice += calculatePricing((fCount / 2) + (fCount % 2), 10);
+        totalPrice += calculateFpricing(freq.getOrDefault('F', 0));
 
 
         return totalPrice;
     }
 }
+
 
 
 

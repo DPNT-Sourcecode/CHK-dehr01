@@ -37,32 +37,36 @@ public class CheckoutSolutionTest {
     @CsvSource({
             "'B', 30",
             "'BB', 45",
-            "'AAAB', 160",
-            "'BBCCC', 105",
-            "'BDBCCCD', 135",
             "'BBBB', 90",
-            "'E', 40",
-            "'EE', 80",
-            "'EEE', 120",
-            "'EB', 70",
-            "'EEB', 80",
-            "'EEBB', 110",
-            "'EEBBB', 125",
-            "'EEBBBB', 155",
     })
-    public void checkoutTest(String input, int expectedPrice) {
+    public void Btests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 
     @ParameterizedTest
     @CsvSource({
-            "'A', 50",
-            "'B', 30",
-            "'BB', 45",
             "'AAAB', 160",
             "'BBCCC', 105",
             "'BDBCCCD', 135",
-            "'BBBB', 90",
+    })
+    public void combinedTests(String input, int expectedPrice) {
+        assertThat(checkout.checkout(input), equalTo(expectedPrice));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "'F', 10",
+            "'FF', 20", // offer requires 3 Fs in basket
+            "'FFF', 20",
+            "'FFFF', 20",
+            "'FFFFF', 30",
+    })
+    public void Ftests(String input, int expectedPrice) {
+        assertThat(checkout.checkout(input), equalTo(expectedPrice));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "'E', 40",
             "'EE', 80",
             "'EEE', 120",
@@ -72,8 +76,9 @@ public class CheckoutSolutionTest {
             "'EEBBB', 125",
             "'EEBBBB', 155",
     })
-    public void checkoutTest(String input, int expectedPrice) {
+    public void Etests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
+
 
