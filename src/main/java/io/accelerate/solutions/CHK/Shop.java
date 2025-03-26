@@ -26,6 +26,12 @@ public class Shop {
 
     public int calculatePrice(HashMap<Character, Integer> frequencies) {
 
+        int total = 0;
+
+        // calculate the special discount
+
+
+
         // consider if we have any freebies
         List<Freebies> freebies = new ArrayList<>();
         for (ShopItem item : items) {
@@ -41,14 +47,9 @@ public class Shop {
         }
 
         // sum how much each of the non-free items now cost
-        int total = 0;
         for (ShopItem item : items) {
             total += item.calculatePrice(frequencies.getOrDefault(item.getName(), 0));
         }
         return total;
     }
 }
-
-
-
-
