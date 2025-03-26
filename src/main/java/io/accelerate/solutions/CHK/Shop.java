@@ -8,6 +8,8 @@ import java.util.List;
 public class Shop {
     List<ShopItem> items;
 
+    SpecialDiscount sd;
+
     public Shop() {
         items = new ArrayList<>();
     };
@@ -18,6 +20,7 @@ public class Shop {
     }
 
     public Shop addSpecialDiscount(char[] includedItems, int requiredAmount, int price) {
+        sd = new SpecialDiscount(includedItems, requiredAmount, price);
         return this;
     }
 
@@ -45,6 +48,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 
