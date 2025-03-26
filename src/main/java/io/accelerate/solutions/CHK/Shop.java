@@ -38,7 +38,15 @@ public class Shop {
         // handle the remainder
         int remainingSpecialDiscountItems = totalSpecialDiscountFrequencies % sd.getRequiredAmount();
         // we want to choose the cheapest speical discount items to not include in the discount
-        HashMap<Character, Integer> cheapestSpeicalDiscount = 
+        HashMap<Character, Integer> cheapestSpeicalDiscountPrice = new HashMap<>();
+        for (char item : sd.getRequiredItems()) {
+            for (ShopItem shopItem : this.items) {
+                if (item == shopItem.getName()) {
+                    cheapestSpeicalDiscountPrice.put(item, shopItem.getUnitPrice());
+                }
+            }
+        }
+
 
 
         // consider if we have any freebies
@@ -62,5 +70,6 @@ public class Shop {
         return total;
     }
 }
+
 
 

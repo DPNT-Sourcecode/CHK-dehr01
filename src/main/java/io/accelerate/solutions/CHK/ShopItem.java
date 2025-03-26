@@ -60,6 +60,10 @@ public class ShopItem {
         return freebiesList;
     }
 
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
     public char getName() {
         return name;
     }
@@ -90,3 +94,4 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
