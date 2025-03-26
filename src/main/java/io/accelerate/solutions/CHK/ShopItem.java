@@ -6,7 +6,8 @@ public class ShopItem {
     private final int unitPrice;
     private final char name;
     private HashMap<Integer, Integer> discounts; // frequency -> resulting price
-    private HashMap<Integer, Integer> buyXgetYfree;
+    private HashMap<Integer, AbstractMap.SimpleEntry<>> buyXgetYfreeOfZ;
+    private char freebieItemType;
 
     public ShopItem(char name, int unitPrice) {
         this.name = name;
@@ -22,7 +23,17 @@ public class ShopItem {
 
     public ShopItem addBuyXgetYfree(int buyFrequency, int freeFrequency, char freeItemType) {
         buyXgetYfree.put(buyFrequency, freeFrequency);
+        this.freebieItemType = freeItemType;
         return this;
+    }
+
+    /**
+     *
+     * @param n number of this shop item that exist
+     * @return the freeby item and how many are free
+     */
+    public Freebies getFreebies(int n) {
+        return new Freebies(this.freebieItemType, n / );
     }
 
     public char getName() {
@@ -59,6 +70,7 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
 
 
