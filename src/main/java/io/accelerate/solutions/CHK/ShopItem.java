@@ -32,7 +32,15 @@ public class ShopItem {
      */
     public Freebies getFreebies(int n) {
         for (Map.Entry<Integer, AbstractMap.SimpleEntry<Character, Integer>> e : buyXgetYfreeOfZ.entrySet()) {
-            
+
+            AbstractMap.SimpleEntry<Character, Integer> freeInfo = e.getValue();
+            char freeItemType = freeInfo.getKey();
+            int freeFrequency = freeInfo.getValue();
+
+            int fullSets = n / e.getKey();
+            if (fullSets > 0) {
+                return new Freebies(freeItemType, fullSets * freeFrequency);
+            }
         }
     }
 
@@ -70,6 +78,7 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
 
 
