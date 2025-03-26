@@ -23,10 +23,20 @@ public class ShopItem {
     }
 
     public int calculatePrice(int count) {
-        if (count <= 0) { return 0; }
-        return count * unitPrice;
+
+        int totalPrice = 0;
+
+        if (count <= 0) { return totalPrice; }
+        
+        // apply discounts
+        for (Integer frequency : discounts.keySet()) {
+            int discountPrice = discounts.get(frequency);
+            int fullSets = count / frequency;
+            totalPrice += fullSets * discountPrice;
+            count %= frequency;
+        }
+
+        totalPrice += count * unitPrice;
+        return totalPrice;
     }
 }
-
-
-

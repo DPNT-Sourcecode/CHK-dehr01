@@ -76,5 +76,3 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
-
-
