@@ -54,7 +54,7 @@ public class CheckoutSolution {
                 .addItem(new ShopItem('I', 35))
                 .addItem(new ShopItem('J', 60))
                 .addItem(
-                        new ShopItem('K', 80)
+                        new ShopItem('K', 70)
                                 .addDiscount(2, 150)
                 )
                 .addItem(new ShopItem('L', 90))
@@ -76,7 +76,7 @@ public class CheckoutSolution {
                         new ShopItem('R', 50)
                                 .addBuyXgetYfree(3, 1, 'Q')
                 )
-                .addItem(new ShopItem('S', 30))
+                .addItem(new ShopItem('S', 20))
                 .addItem(new ShopItem('T', 20))
                 .addItem(
                         new ShopItem('U', 40)
@@ -88,11 +88,12 @@ public class CheckoutSolution {
                                 .addDiscount(3, 130)
                 )
                 .addItem(new ShopItem('W', 20))
-                .addItem(new ShopItem('X', 90))
-                .addItem(new ShopItem('Y', 10))
-                .addItem(new ShopItem('Z', 50))
+                .addItem(new ShopItem('X', 17))
+                .addItem(new ShopItem('Y', 20))
+                .addItem(new ShopItem('Z', 21))
                 .addSpecialDiscount(new char[]{'S', 'T', 'X', 'Y', 'Z'}, 3, 45);
 
         return shop.calculatePrice(freq);
     }
 }
+

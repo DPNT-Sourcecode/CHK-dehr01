@@ -1,9 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Shop {
     List<ShopItem> items;
@@ -35,18 +33,35 @@ public class Shop {
         }
         total += sd.getPrice() * totalSpecialDiscountFrequencies / sd.getRequiredAmount();
 
-        // handle the remainder
+        // handle the remaining unused special discount items
         int remainingSpecialDiscountItems = totalSpecialDiscountFrequencies % sd.getRequiredAmount();
-        // we want to choose the cheapest speical discount items to not include in the discount
-        HashMap<Character, Integer> cheapestSpeicalDiscountPrice = new HashMap<>();
-        for (char item : sd.getRequiredItems()) {
-            for (ShopItem shopItem : this.items) {
-                if (item == shopItem.getName()) {
-                    cheapestSpeicalDiscountPrice.put(item, shopItem.getUnitPrice());
+        if (remainingSpecialDiscountItems > 0) {
+            // we want to choose the cheapest speical-discount-items to not include in the discount
+            HashMap<Character, Integer> cheapestSpeicalDiscountPrice = new HashMap<>();
+            for (char item : sd.getRequiredItems()) {
+                for (ShopItem shopItem : this.items) {
+                    if (item == shopItem.getName()) {
+                        cheapestSpeicalDiscountPrice.put(item, shopItem.getUnitPrice());
+                    }
+                }
+            }
+
+            // sort the special discount items in decreasing order of price
+            List<Map.Entry<Character, Integer>> entrylist = new ArrayList<>(cheapestSpeicalDiscountPrice.entrySet());
+            entrylist.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+            for (Map.Entry<Character, Integer> entry : entrylist) {
+                int currentAmount = frequencies.getOrDefault(entry.getKey(), 0);
+                if (currentAmount > 0) {
+                   if (currentAmount < remainingSpecialDiscountItems) {
+                       remainingSpecialDiscountItems -= currentAmount;
+                       frequencies.put(entry.getKey(), 0);
+                   } else {
+                       frequencies.put(entry.getKey(), currentAmount - remainingSpecialDiscountItems);
+                       break;
+                   }
                 }
             }
         }
-
 
 
         // consider if we have any freebies
@@ -70,6 +85,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 
