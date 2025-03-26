@@ -40,8 +40,10 @@ public class CheckoutSolution {
     }
 
     public Integer calculateFpricing(int n) {
-        if (n <= 0 ) {return 0;}
+        if (n <= 0 ) {return 0; }
+        if (n < 3) { return 10 * n; }
         int price = 0;
+        price += 10 * ((n / 2) + (n % 2));
         return price;
     }
 
@@ -69,14 +71,13 @@ public class CheckoutSolution {
         totalPrice += calculatePricing(freq.getOrDefault('C', 0), 20);
         totalPrice += calculatePricing(freq.getOrDefault('D', 0), 15);
         totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
-
-        int fCount = freq.getOrDefault('F', 0);
         totalPrice += calculateFpricing(freq.getOrDefault('F', 0));
 
 
         return totalPrice;
     }
 }
+
 
 
 
