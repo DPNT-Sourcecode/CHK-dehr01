@@ -6,9 +6,25 @@ import java.util.HashMap;
 
 public class CheckoutSolution {
 
-
+    /**
+     *
+     * @param n number of the item purchased
+     * @param unitPrice price for one item
+     * @return the total price
+     */
     public Integer calculatePricing(int n,  int unitPrice) {
+        if (n <= 0) { return 0; }
         return n * unitPrice;
+    }
+
+    public Integer calculateApricing(int n) {
+        int totalPrice = 0;
+        totalPrice += 200 * (n / 5);
+        n %= 5;
+        totalPrice += 130 * (n / 3);
+        n %= 3;
+        totalPrice += 50 * n;
+        return totalPrice;
     }
 
     /**
@@ -39,7 +55,6 @@ public class CheckoutSolution {
             freq.put(item, previousFreq + 1);
         }
 
-
         // sum over some items
         if (freq.containsKey('B')) {
             int numberOfBs = freq.get('B');
@@ -47,34 +62,14 @@ public class CheckoutSolution {
             totalPrice += calculateBpricing(numberOfBs - numberOfFreeBs);
         }
 
-        // sum over each item type
-        for (char item : freq.keySet()) {
-            int n = freq.get(item);
-            int freeBcount = 0;
-            switch (item) {
-                case 'A':
-                    totalPrice += 200 * (n / 5);
-                    n %= 5;
-                    totalPrice += 130 * (n / 3);
-                    n %= 3;
-                    totalPrice += 50 * n;
-                    break;
-                case 'C':
-                    totalPrice += calculatePricing(n, 20);
-                    break;
-                case 'D':
-                    totalPrice += calculatePricing(n, 15);
-                    break;
-                case 'E':
-                    totalPrice += calculatePricing(n, 40);
-            }
-//
-//            if (freq.get('B') - freeBcount > 0) {
-//                totalPrice -=
-//            }
-        }
+        totalPrice += calculatePricing(freq.getOrDefault('C', 0), 20);
+        totalPrice += calculatePricing(freq.getOrDefault('D', 0), 15);
+        totalPrice += calculatePricing(freq.getOrDefault('E', 0), 40);
+        totalPrice += calculateApricing(freq.getOrDefault('A', 0));
+
 
         return totalPrice;
     }
 }
+
 
