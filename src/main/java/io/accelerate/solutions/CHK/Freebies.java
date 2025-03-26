@@ -26,9 +26,10 @@ public class Freebies {
 
     @Override
     public String toString() {
-        return String.format("Freebies[itemType='%c', freeQuantity=%d, minimumAmount=%d]", itemType, freeQuantity, minimumAmount);
+        return String.format("Freebies[givignItemType='%c', itemType='%c', freeQuantity=%d, minimumAmount=%d]", givingItemType, itemType, freeQuantity, minimumAmount);
     }
 }
+
 
 
 

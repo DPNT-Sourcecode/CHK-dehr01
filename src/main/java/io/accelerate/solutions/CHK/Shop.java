@@ -31,7 +31,10 @@ public class Shop {
         for (Freebies f : freebies) {
             System.out.println(f);
             int existingItems = frequencies.getOrDefault(f.getItemType(), 0);
-            if (f.getGivingItemType() >= f.getMinimumAmount()) {
+
+            // check if we have triggered the discount
+            if (frequencies.getOrDefault(f.getGivingItemType(),0) > f.getMinimumAmount()) {
+                // check if we have enough of the discounted item to take advantage of the freebies
                 int itemsAfterRemovingFree = Math.max(0, existingItems - f.getFreeQuantity());
                 frequencies.put(f.getItemType(), itemsAfterRemovingFree);
             }
@@ -45,6 +48,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 
