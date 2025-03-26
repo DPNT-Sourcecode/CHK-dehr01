@@ -96,4 +96,3 @@ public class CheckoutSolution {
         return shop.calculatePrice(freq);
     }
 }
-

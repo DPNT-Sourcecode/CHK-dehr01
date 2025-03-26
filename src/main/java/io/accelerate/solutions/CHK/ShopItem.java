@@ -93,5 +93,3 @@ public class ShopItem {
         return totalPrice;
     }
 }
-
-

@@ -22,10 +22,10 @@ public class CheckoutSolutionTest_R5 {
             "'BDBCCCD', 135",
             "'STX', 45",
             "'STXX', 62",
+            "'XXXXXXT', 107"
     })
     public void tests(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 
 }
-
