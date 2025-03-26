@@ -16,4 +16,10 @@ public class Freebies {
     public int getFreeQuantity() {
         return freeQuantity;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Freebies[itemType='%c', freeQuantity=%d]", itemType, freeQuantity);
+    }
 }
+
