@@ -30,15 +30,23 @@ public class ShopItem {
         for (Map.Entry<Integer, AbstractMap.SimpleEntry<Character, Integer>> e : buyXgetYfreeOfZ.entrySet()) {
 
             int requiredItemsPerFreeItem = e.getKey();
+            char requiredItemType = name;
+
             int actualRequiredItemCount = frequencies.getOrDefault(name, 0);
 
             char freeItemType = e.getValue().getKey();
             int freeItemPerRequired = e.getValue().getValue();
 
             int totalFreeitems = 0;
+            int remainingItems = actualRequiredItemCount;
+
+            while (remainingItems > requiredItemsPerFreeItem) {
+                totalFreeitems += freeItemPerRequired;
+                remainingItems -= requiredItemsPerFreeItem;
+            }
 
             if (totalFreeitems > 0) {
-                freebiesList.add(new Freebies(freeItemType, totalFreeItems));
+                freebiesList.add(new Freebies(freeItemType, totalFreeitems));
             }
         }
 
@@ -75,6 +83,7 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
 
 
