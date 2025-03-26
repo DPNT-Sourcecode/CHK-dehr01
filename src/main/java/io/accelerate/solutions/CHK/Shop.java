@@ -22,9 +22,8 @@ public class Shop {
         // consider if we have any freebies
         List<Freebies> freebies = new ArrayList<>();
         for (ShopItem item : items) {
-            freebies.addAll(item.getFreebies(frequencies.getOrDefault(item.getName(), 0)));
+            freebies.addAll(item.getFreebies(frequencies)));
         }
-
 
         // if we do, remove the free amount from our frequencies map
         for (Freebies f : freebies) {
@@ -41,6 +40,7 @@ public class Shop {
         return total;
     }
 }
+
 
 
 

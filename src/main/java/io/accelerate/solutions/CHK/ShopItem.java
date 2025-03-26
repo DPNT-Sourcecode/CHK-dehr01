@@ -25,23 +25,20 @@ public class ShopItem {
         return this;
     }
 
-    /**
-     *
-     * @param n number of this shop item that exist
-     * @return the freeby item and how many are free
-     */
-    public List<Freebies> getFreebies(int n) {
+    public List<Freebies> getFreebies(HashMap<Character, Integer> frequencies) {
         List<Freebies> freebiesList = new ArrayList<>();
-
         for (Map.Entry<Integer, AbstractMap.SimpleEntry<Character, Integer>> e : buyXgetYfreeOfZ.entrySet()) {
 
-            AbstractMap.SimpleEntry<Character, Integer> freeInfo = e.getValue();
-            char freeItemType = freeInfo.getKey();
-            int freeFrequency = freeInfo.getValue();
+            int requiredItemsPerFreeItem = e.getKey();
+            int actualRequiredItemCount = frequencies.getOrDefault(name, 0);
 
-            int fullSets = n / e.getKey();
-            if (fullSets > 0) {
-                freebiesList.add(new Freebies(freeItemType, fullSets * freeFrequency));
+            char freeItemType = e.getValue().getKey();
+            int freeItemPerRequired = e.getValue().getValue();
+
+            int totalFreeitems = 0;
+
+            if (totalFreeitems > 0) {
+                freebiesList.add(new Freebies(freeItemType, totalFreeItems));
             }
         }
 
@@ -78,5 +75,6 @@ public class ShopItem {
         return totalPrice;
     }
 }
+
 
 
