@@ -14,7 +14,7 @@ public class CheckoutSolution {
             int previousFreq = freq.getOrDefault(item, 0);
             freq.put(item, previousFreq + 1);
         }
-        System.out.println(freq);
+
         // sum over each item type
         for (char item : freq.keySet()) {
             switch (item) {
@@ -38,6 +38,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 
