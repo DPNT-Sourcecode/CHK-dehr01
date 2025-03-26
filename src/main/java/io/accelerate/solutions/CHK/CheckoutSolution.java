@@ -20,7 +20,9 @@ public class CheckoutSolution {
             switch (item) {
                 case 'A':
                     totalPrice += 50 * Math.floorMod(freq.get(item), 3);
+                    System.out.println(totalPrice + " " + Math.floorMod(freq.get(item), 3));
                     totalPrice += 50 * freq.get(item) % 3;
+                    System.out.println(totalPrice + " " + (freq.get(item) % 3));
                     break;
                 case 'B':
                     totalPrice += 45 * Math.floorMod(freq.get(item), 2);
@@ -38,5 +40,6 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 

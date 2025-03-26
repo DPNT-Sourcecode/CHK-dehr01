@@ -1,22 +1,26 @@
-package io.accelerate.solutions.HLO;
+package io.accelerate.solutions.CHK;
 
-import io.accelerate.solutions.HLO.HelloSolution;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class HelloSolutionTest {
-    private HelloSolution hello;
+public class CheckoutSolutionTest {
+    private CheckoutSolution checkout;
 
     @BeforeEach
     public void setUp() {
-        hello = new HelloSolution();
+        checkout = new CheckoutSolution();
     }
 
     @Test
-    public void helloTest() {
-        assertThat(hello.hello("kishan"), equalTo("Hello, kishan!"));
+    public void checkoutTest() {
+        assertThat(checkout.checkout("A"), equalTo(50));
+        assertThat(checkout.checkout("AA"), equalTo(100));
+        assertThat(checkout.checkout("AAA"), equalTo(130));
+        assertThat(checkout.checkout("AAAB"), equalTo(160));
+        assertThat(checkout.checkout("BBCCC"), equalTo(105));
     }
 }
+

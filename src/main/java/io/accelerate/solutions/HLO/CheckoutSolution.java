@@ -1,8 +1,6 @@
 package io.accelerate.solutions.HLO;
 
-import io.accelerate.runner.SolutionNotImplementedException;
-
-public class HelloSolution {
+public class CheckoutSolution {
     public String hello(String friendName) {
         return "Hello, " + friendName + "!" ;
     }

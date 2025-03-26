@@ -1,10 +1,9 @@
 package io.accelerate;
 
 import io.accelerate.solutions.ARRS.ArraySumSolution;
-import io.accelerate.solutions.CHK.CheckoutSolution;
 import io.accelerate.solutions.CHL.CheckliteSolution;
 import io.accelerate.solutions.FIZ.FizzBuzzSolution;
-import io.accelerate.solutions.HLO.HelloSolution;
+import io.accelerate.solutions.HLO.CheckoutSolution;
 import io.accelerate.solutions.IRNG.IntRangeSolution;
 import io.accelerate.solutions.SUM.SumSolution;
 import com.google.gson.JsonElement;
@@ -24,20 +23,20 @@ import java.util.List;
  */
 class EntryPointMapping {
     private final SumSolution sumSolution;
-    private final HelloSolution helloSolution;
+    private final CheckoutSolution helloSolution;
     private final ArraySumSolution arraySumSolution;
     private final IntRangeSolution intRangeSolution;
     private final FizzBuzzSolution fizzBuzzSolution;
-    private final CheckoutSolution checkoutSolution;
+    private final io.accelerate.solutions.CHK.CheckoutSolution checkoutSolution;
     private final CheckliteSolution checkliteSolution;
 
     EntryPointMapping() {
         sumSolution = new SumSolution();
-        helloSolution = new HelloSolution();
+        helloSolution = new CheckoutSolution();
         arraySumSolution = new ArraySumSolution();
         intRangeSolution = new IntRangeSolution();
         fizzBuzzSolution = new FizzBuzzSolution();
-        checkoutSolution = new CheckoutSolution();
+        checkoutSolution = new io.accelerate.solutions.CHK.CheckoutSolution();
         checkliteSolution = new CheckliteSolution();
     }
 
@@ -73,3 +72,4 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
+
