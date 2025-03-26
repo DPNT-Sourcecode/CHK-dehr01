@@ -11,6 +11,7 @@ public class CheckoutSolution {
      * @return cost of n B's with discounts applied
      */
     public Integer calculateBpricing(int n) {
+        if (n <= 0 ) {return 0;}
         int price = 0;
         price += 30 * (n % 2); // full price remainder
         price += 45 * (n / 2); // discounts
@@ -35,9 +36,10 @@ public class CheckoutSolution {
 
 
         // sum over some items
-        // B prices
         if (freq.containsKey('B')) {
-            totalPrice += calculateBpricing(freq.get('B'));
+            int numberOfBs = freq.get('B');
+            int numberOfFreeBs = freq.getOrDefault('E', 0) / 2;
+            totalPrice += calculateBpricing(numberOfBs - numberOfFreeBs);
         }
 
         // sum over each item type
@@ -71,6 +73,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 

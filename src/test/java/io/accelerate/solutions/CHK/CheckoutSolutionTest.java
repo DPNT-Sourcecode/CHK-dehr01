@@ -33,10 +33,19 @@ public class CheckoutSolutionTest {
             "'AAAB', 160",
             "'BBCCC', 105",
             "'BDBCCCD', 135",
-            "'BBBB', 90"
+            "'BBBB', 90",
+            "'E', 40",
+            "'EE', 80",
+            "'EEE', 120",
+            "'EB', 70",
+            "'EEB', 80",
+            "'EEBB', 110",
+            "'EEBBB', 125",
+            "'EEBBBB', 155",
     })
     public void checkoutTest(String input, int expectedPrice) {
         assertThat(checkout.checkout(input), equalTo(expectedPrice));
     }
 }
+
 
