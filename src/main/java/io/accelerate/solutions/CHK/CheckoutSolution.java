@@ -42,9 +42,7 @@ public class CheckoutSolution {
     public Integer calculateFpricing(int n) {
         if (n <= 0 ) {return 0; }
         if (n < 3) { return 10 * n; }
-        int price = 0;
-        price += 10 * ((n / 2) + (n % 2));
-        return price;
+        return (int) (10 * Math.ceil(n / 2.0));
     }
 
     public Integer checkout(String skus) {
@@ -77,6 +75,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 
